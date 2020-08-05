@@ -4,10 +4,10 @@
 == Created by : Shubaham Goswmai
 ==========================================================
 ***************************************************************/
+
 input{
 	margin-left: 5px;
 	width: 500px;
-	background-color: aqua;
 }
 
 .origin_address_section{
@@ -59,4 +59,7 @@ input{
 	width:100%; 
 	height:550px;
 	border-radius: 8px;
+}
+#reload{
+	margin-left: 1rem;
 }
