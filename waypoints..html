@@ -15,77 +15,130 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="waypoints.css">
-    
+    <link rel="stylesheet" type="text/css" href="dash.css">
+    <link rel="stylesheet" type="text/css" href="extra.css">
+
+
   </head>
   <body>
-    <div class="container">
-        
-
-        <!-- Start Origin Address -->
-        <div class="row origin_address_section">
-
-            <!--Start Origin Address Field-->
-            <input id="address_origin" class="form-control address_origin" placeholder="Origin address"/>
-            <!--End Origin Address Field-->
-         
-            <!--Start Fields Lat Lng Origin-->
-            <input id="lat_origin" class="form-control lat_lng" type="text" placeholder="Origin latitude">
-            <input id="lng_origin" class="form-control lat_lng" type="text" placeholder="Origin longitude">
-            <!--End Fields Lat Lng Origin-->
-
-            <!-- Start Add waypoint icon-->
-                <i id="add-way-point" class="fa fa-plus fa-lg icon_add_way_point" title="Add waypoint"></i>
-            <!-- End Add waypoint icon-->  
-
+    
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+      <h5 class="my-0 mr-md-auto font-weight-normal ">HelloMaps</h5>
+     More by us : <a class="btn btn-outline-primary ml-2" href="{{ url('/logout') }}">Color Insperation </a>
+    </div>
+    
+    <div class="container mb-4">
+      <div class="row">
+        <div class="col-md-8">
+          
+           <!-- Start Map -->
+           <div id="map_canvas" class="my_map"></div>
+           <!-- End Map -->
         </div>
-        <!-- End Origin Address -->
-        
+        <div class="col-md-4">
+            <!-- Start Origin Address -->
+        <div class="row ">
 
+          <div class="card mb-4" style="width: 100%;">
+            <div class="card-header mb-0">
+              Set Starting Points 
+            </div>
+            <div class="card-body mt-0 pt-0">
 
-
-        <!-- Start WayPoints Address -->  
-        <div class="row waypoint_address_section">  
-              <div class="waypoints">
-                  
+              <div class="form-group">
+                <input id="address_origin" class="form-control address_origin" placeholder="Origin address"/>
+             
               </div>
-        </div>
-        <!-- End WayPoints Address -->
+
+              <div class="input-group">
+                <input id="lng_origin" class="form-control lat_lng" type="text" placeholder="Origin longitude">
+                <input id="lat_origin" class="form-control lat_lng" type="text" placeholder="Origin latitude">
+              </div>
 
 
-
-
-        <!-- Start Destination Address -->
-        <div class="row destination_address_section">
-                   
-            <!--Start Destination Address Field-->
-            <input id="address_destination" class="form-control address_destination" placeholder="Destination address"/>
-            <!--Start Destination Address Field-->
-
-            <!--Start Fields Lat Lng Destination-->
-            <input id="lat_destination" class="form-control lat_lng" type="text" placeholder="Destination latitude">
-            <input id="lng_destination" class="form-control lat_lng" type="text" placeholder="Destination longitude">
-            <!--Start Fields Lat Lng Destination-->
-        
-
-            <!-- Start Button Get Path-->
-            <div class = "button-style">
-            <a class="btn btn-warning btn-get-path" onclick="getpaths()"><b>Get Path</b></a>
-            
             </div>
-            <!-- End Button Get Path-->
-            <div class = "button-style">
-              <a id="reload" class="btn btn-warning btn-get-path" onclick="window.location.reload();"><b>Reload</b></a>
+          </div>
+
+          <div class="card mb-4" style="width: 100%;">
+            <div class="card-header mb-">
+              Way Points
             </div>
+            <div class="card-body mt-0 pt-0">
+
+              <div class="form-group">
+               <!-- Start WayPoints Address -->  
+                    <div class=" waypoint_address_section">  
+                      <div class="waypoints">  
+                      </div>
+                </div>
+              </div>
+              <div style="cursor: pointer;" id="add-way-point">
+                <i  class="fa fa-plus fa-sm icon_add_way_point mr-2" title="Add waypoint"> </i>Add Point
+
+              </div>
             
-        </div>
-        <!-- End Destination Address -->
-        
+              
+            </div>
+          </div>
 
+          <div class="card mb-4" style="width: 100%;">
+            <div class="card-header mb-0">
+              Set Destination Points 
+            </div>
+            <div class="card-body mt-0 pt-0">
 
-        <!-- Start Map -->
-        <div id="map_canvas" class="my_map"></div>
-        <!-- End Map -->
+              <div class="form-group">
+                <!--Start Destination Address Field-->
+                <input id="address_destination" class="form-control address_destination" placeholder="Destination address"/>
+                <!--Start Destination Address Field-->
+              </div>
+
+              <div class="input-group">
+                <!--Start Fields Lat Lng Destination-->
+                <input id="lat_destination" class="form-control lat_lng" type="text" placeholder="Destination latitude">
+                <input id="lng_destination" class="form-control lat_lng" type="text" placeholder="Destination longitude">
+                <!--Start Fields Lat Lng Destination-->
+              </div>
+
+            </div>
+          </div>
+          
+
+          
+
+      </div>
+      <!-- End Origin Address -->
       
+
+
+
+      
+      <!-- End WayPoints Address -->
+
+
+
+
+      <!-- Start Destination Address -->
+      <div class="row destination_address_section">
+        
+          <!-- Start Button Get Path-->
+          <div class = "button-style">
+          <a class="btn btn-primary btn-get-path text-white mr-3" onclick="getpaths()"><b>Get Path</b></a>
+          
+          </div>
+          <!-- End Button Get Path-->
+          <div class = "button-style">
+            <a id="reload" class="mb-2 btn btn-sm btn-outline-info btn-get-path text-info" onclick="window.location.reload();"><b>Reload</b></a>
+          </div>
+          
+      </div>
+      <!-- End Destination Address -->
+      
+        </div>
+      </div>
+        
+
+
         
           
   </div>

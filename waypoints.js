@@ -9,10 +9,12 @@
   var c = 0;
   $("#add-way-point").click(function () {
       $(this).hide();
-      $(".waypoints").append('<i class="fa fa-map-pin fa-lg icon_map_pin" title="Get My Location"></i><input id="address_waypoint'+c+'" class="form-control waypoint_address" placeholder="Waypoint address" onchange="add_new_waypoint('+c+')"/><br>');
+      $(".waypoints").append('<div class="input-group mb-3"> <div class="input-group-prepend"> <span class="input-group-text"> <i class="fa fa-map-pin fa-lg icon_map_pin"></i> </span> </div> <input placeholder="Waypoint address" type="text" id="address_waypoint'+c+'" onchange="add_new_waypoint('+c+')" class="form-control" aria-label="Amount (to the nearest dollar)"> </div>');
         c = c+1;
         console.log(c);
   });
+
+  
 
   function add_new_waypoint(nb){
       if($('#address_waypoint'+nb).val().length != 0){
